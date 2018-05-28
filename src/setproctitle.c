@@ -144,7 +144,55 @@ static int spt_copyargs(int argc, char *argv[]) {
 	return 0;
 } /* spt_copyargs() */
 
-
+/*
+ * 148     void spt_init(int argc, char *argv[]) {
+ * (gdb) p environ
+ *  $3 = (char **) 0x7fffffffe8f8
+ *  (gdb) p *environ
+ *  $4 = 0x7fffffffeb47 "XDG_SESSION_ID=13390"
+ *  (gdb) p *environ[0]
+ *  $5 = 88 'X'
+ *  (gdb) p environ[0] 
+ *  $6 = 0x7fffffffeb47 "XDG_SESSION_ID=13390"
+ *  (gdb) p environ[2]
+ *  $7 = 0x7fffffffeb6c "TERM=xterm"
+ *  (gdb)  p argv[0]
+ *  $9 = 0x7fffffffeb14 "/sandbox-local/jowang/share/redis/src/redis-server"
+ *  (gdb) p argc
+ *  $10 = 1
+ *  (gdb) p argv[1]
+ *  $11 = 0x0
+ *  (gdb) p argv
+ *  $12 = (char **) 0x7fffffffe8e8
+ *  (gdb) p environ
+ *  $13 = (char **) 0x7fffffffe8f8
+ *  (gdb) p argv[0]
+ *  $14 = 0x7fffffffeb14 "/sandbox-local/jowang/share/redis/src/redis-server"
+ *  (gdb) p environ[0]
+ *  $15 = 0x7fffffffeb47 "XDG_SESSION_ID=13390"
+ *  (gdb) p argv[1]   
+ *  $16 = 0x0
+ *  (gdb) p &argv[0]
+ *  $17 = (char **) 0x7fffffffe8e8
+ *  (gdb) p &argv[1]
+ *  $18 = (char **) 0x7fffffffe8f0
+ *  (gdb) p &argv[2]
+ *  $19 = (char **) 0x7fffffffe8f8
+ *  (gdb) p environ[0]
+ *  $20 = 0x7fffffffeb47 "XDG_SESSION_ID=13390"
+ *  (gdb) p &environ[0]
+ *  $21 = (char **) 0x7fffffffe8f8
+ * (gdb) p SPT
+ * $23 = {
+ *   arg0 = 0x771010 "/sandbox-local/jowang/share/redis/src/redis-server", 
+ *   base = 0x7fffffffeb14 "/sandbox-local/jowang/share/redis/src/redis-server", 
+ *   end = 0x7fffffffefc5 "/sandbox-local/jowang/share/redis/src/redis-server", 
+ *   nul = 0x7fffffffeb46 "", 
+ *   reset = false, 
+ *   error = 0
+ * }
+ *
+ */
 void spt_init(int argc, char *argv[]) {
         char **envp = environ;
 	char *base, *end, *nul, *tmp;
